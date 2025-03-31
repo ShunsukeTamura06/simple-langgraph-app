@@ -1,0 +1,33 @@
+{
+  "name": "simple-langgraph-app",
+  "version": "0.1.0",
+  "env_file": ".env",
+  "graphs": {
+    "conversation_agent": {
+      "module": "app.agent",
+      "graph": "conversation_graph",
+      "config": {
+        "title": "Simple Conversation Agent",
+        "description": "A simple agent that can have a conversation with you",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "model": {
+              "type": "string",
+              "enum": ["gpt-4o", "gpt-3.5-turbo", "claude-3-opus", "claude-3-sonnet"],
+              "description": "The LLM model to use for the conversation",
+              "default": "gpt-4o"
+            },
+            "temperature": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "The temperature for the LLM generation",
+              "default": 0.7
+            }
+          }
+        }
+      }
+    }
+  }
+}
